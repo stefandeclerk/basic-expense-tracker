@@ -1,17 +1,14 @@
 import pyinputplus as pyip
 from pprint import pprint
-import datetime
 
 
 # This is a simple Expense Tracker application.
 # It tracks expenses to a budget. 
 # Categorize expenses
 # Includes overspend warnings
-# Surplus gets added to the savings account, shortfall deducted from the Savings account.
 
 categories = {}
 income = []
-savings_acc = []
 transactions = []
 entry = {}
 entry_dict = dict(date={}, item={}, category={}, cost={})
@@ -64,16 +61,6 @@ while True:
     elif another_category == "no":
         break
 
-"""
-
-# TODO: budget surplus into savings
-# Deposit surplus budget into savings
-if budget >= 0:
-    print(f"Budget surplus = {budget}\n" 
-          f"Depositing surplus into savings account.\n")
-    savings_acc = int(str(savings_acc)) + int(str(budget))
-    print(f"Savings account balance: {savings_acc}\n")
-"""
 
 def entry():
     # Loop to generate expense entries according to date, type of expense, category & price
@@ -99,6 +86,7 @@ def entry():
         check_cats = entry_dict["category"]
         categories[check_cats] = categories[check_cats] - transactions[-1][3][1]
 
+        
     print("\n")
 
     # Print transaction entry
@@ -111,6 +99,7 @@ def entry():
     for key, value in categories.items():
         print(key, ' : ', value)
 
+        
 print("\n")
 
 # Check whether the user wants to add an entry
@@ -125,21 +114,3 @@ print("\n")
 
 # Print list of transactions
 pprint(transactions)
-
-
-
-
-
-
-# TODO: Option to use existing categories / non-new users
-
-# TODO: Print final - items, category totals, grand total
-# TODO: Low budget warning
-# TODO: Add totals & display transactions from categories
-# TODO: Show expense so far per category
-# TODO: Deduct expenses off total budget
-
-# TODO: Assign transactions to categories
-
-# TODO: List by category, type, date & price
-# TODO: Draw chart of expenses
